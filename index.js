@@ -9,7 +9,7 @@ const questions = [
 ];
 
 const ask = (index = 0) => {
-  process.stdout.write("\n\n" + questions[index] + " > ");
+  process.stdout.write("\n" + questions[index] + " > ");
 };
 
 ask();
@@ -20,7 +20,28 @@ process.stdin.on("data", data => {
   if (answers.length < questions.length) {
     ask(answers.length)
   } else {
-    console.log(answers);
     process.exit();
   }
+});
+
+process.on("exit", () => {
+  console.log(`
+    Bacana Hugo!
+
+    O que você aprendeu hoje foi:
+      > ${answers[0]}
+
+    O que te aborreceu:
+      > ${answers[1]}
+
+    O que você poderia melhorar foi:
+      > ${answers[2]}
+
+    O que te deixou feliz hoje:
+      > ${answers[3]}
+
+    Você ajudou ${answers[4]} pessoa(as) hoje!!
+    
+    Volte amanhã para novas reflexões!!
+  `);
 });
