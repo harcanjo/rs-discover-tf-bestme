@@ -10,4 +10,11 @@ const questions = [
 
 const ask = (index = 0) => {
   process.stdout.write(questions[index] + "\n\n\n");
-}
+};
+
+ask(2);
+
+process.stdin.on("data", data => {
+  process.stdout.write(data.toString().trim() + "\n");
+  process.exit();
+})
